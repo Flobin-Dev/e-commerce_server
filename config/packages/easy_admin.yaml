@@ -1,0 +1,42 @@
+easy_admin:
+  site_name: Admin Panel
+
+  design:
+    brand_color: '#d36500'
+
+  user:
+    display_name: true
+    name_property_path: email
+
+  entities:
+    Category:
+      class: App\Entity\Category
+      form:
+        fields:
+          - "name"
+          - "slug"
+          - "assignableSpecs"
+    Product:
+      class: App\Entity\Product
+      form:
+        fields:
+          - "name"
+          - "category"
+          - "shortDescription"
+          - "advancedDescription"
+          - "price"
+          - "weight"
+          - "stock"
+          - "sku"
+          - property: "productSpecs"
+            type: "collection"
+            type_options:
+              entry_type: App\Form\Type\ProductSpecType
+              by_reference: false
+    SpecDefinition:
+      class: App\Entity\SpecDefinition
+      form:
+        fields:
+          - "name"
+    User:
+      class: App\Entity\User
